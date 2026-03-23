@@ -15,6 +15,7 @@ class View
         array $vars = [],
         int $code = 200
     ): void {
+        http_response_code($code);
         $layoutFile =
             "layouts/{$this->layout}.php";
         $content = $this->renderFile(

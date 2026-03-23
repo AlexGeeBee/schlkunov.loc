@@ -1,22 +1,28 @@
 <?php
 
 namespace src\controllers;
-use src\services\Db;
+
+use src\models\Articles;
+use src\models\Users;
 
 class ArticlesController extends Controller {
     public function index() {
-        $db = new Db();
-        $articles = $db->query('SELECT * FROM `articles`;');
-        // var_dump($articles);
+        $articles = Articles::findAll();
 
         $this->view->renderHTML('articles/index.php', ['articles' => $articles]);
     }
 
     public function view($id) {
-        $db = new Db();
-        $article = $db->query('SELECT * FROM `articles` WHERE id = :id;', [':id' => $id]);
-        var_dump($article);
+        $article = Articles::getById($id);
 
-        $this->view->renderHTML('articles/view.php', ['article' => $article]);
+        if ($article !== null) {
+            $author = Users::getById($article->getAuthorId());
+
+            $this->view->renderHTML('articles/view.php', ['article' => $article, 'author' => $author]);
+        }
+        else {
+            $this->view->renderHTML('errors/404.php', [], 404);
+        }
+        
     }
 }

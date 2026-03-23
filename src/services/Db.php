@@ -5,6 +5,7 @@ namespace src\services;
 class Db {
     private $pdo;
     
+
     public function __construct() {
         $dbOptions = (require __DIR__ . '/../config/settings.php')['db'];
 
@@ -16,7 +17,8 @@ class Db {
         $this->pdo->exec('SET NAMES UTF8');
     }
 
-    public function query(string $sql, $params = []): ?array {
+
+    public function query(string $sql, $params = [], string $className = 'stdClass'): ?array {
         $sth = $this->pdo->prepare($sql);
         $result = $sth->execute($params);
 
@@ -24,6 +26,8 @@ class Db {
             return null;
         }
 
-        return $sth->fetchAll();
+        return $sth->fetchAll(\PDO::FETCH_CLASS, $className);
     }
+
+    
 }

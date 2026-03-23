@@ -9,8 +9,7 @@ class MainController extends Controller {
     
     public function main() {
         $db = new Db();
-        $articles = $db->query('SELECT * FROM `articles`;');
-        // var_dump($articles);
+        $articles = $db->query('SELECT * FROM `articles`;', [], Articles::class);
 
         $this->view->renderHTML('main/main.php', ['articles' => $articles]);
     }
