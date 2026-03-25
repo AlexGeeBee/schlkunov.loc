@@ -16,13 +16,19 @@ class ArticlesController extends Controller {
         $article = Articles::getById($id);
 
         if ($article !== null) {
-            $author = Users::getById($article->getAuthorId());
-
-            $this->view->renderHTML('articles/view.php', ['article' => $article, 'author' => $author]);
+            $this->view->renderHTML('articles/view.php', ['article' => $article]);
         }
         else {
             $this->view->renderHTML('errors/404.php', [], 404);
         }
         
+    }
+
+    public function edit($id) {
+        $article = Articles::getById($id);
+        if ($article === null) {
+            $this->view->renderHTML('errors/404.php', [], 404);
+        }
+        $this->view->renderHTML('articles/edit.php', ['article' => $article]);
     }
 }

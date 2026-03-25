@@ -31,6 +31,10 @@ class Articles extends ActiveRecordEntity {
         return $this->author_id;
     }
 
+    public function getAuthor(): Users {
+        return Users::getById($this->author_id);
+    }
+
 
     
     // public static function findAll():array {

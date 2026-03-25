@@ -2,6 +2,7 @@
 
 // use Src\Controllers\MainController;  
 spl_autoload_register(function (string $className) {
+    // var_dump(__DIR__ . '/' . $className);
     require_once __DIR__ . '/' . str_replace('\\', '/', $className . '.php');
 });
 
