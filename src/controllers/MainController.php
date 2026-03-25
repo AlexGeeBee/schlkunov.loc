@@ -4,6 +4,7 @@ namespace src\controllers;
 
 use views\View;
 use src\services\Db;
+use src\models\Articles; //
 
 class MainController extends Controller {
     

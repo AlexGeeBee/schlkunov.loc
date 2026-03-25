@@ -3,6 +3,7 @@
 
     <h2><?= $article->getName() ?></h2>
     <p><?= $article->getText() ?></p>
+    <a href="article/<?= $article->getId() ?>">Подробнее</a>
     <hr>
 
 <?php endforeach; ?>
