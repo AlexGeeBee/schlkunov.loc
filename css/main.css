@@ -14,7 +14,7 @@ body {
 }
 
 header {
-    background-color: #ffb013;
+    background-color: #40ff00;
     color: white;
     padding: 15px 20px;
     display: flex;
@@ -43,7 +43,7 @@ nav a {
 }
 
 nav a:hover {
-    color: #e3110e;
+    color: black;
 }
 
 main {
@@ -79,6 +79,36 @@ section#blog {
     font-size: 0.9em;
     color: #555;
     margin-bottom: 10px;
+}
+
+
+/* EDIT */
+
+.edit_input {
+    margin: 15px 0 30px;
+    width: 100%;
+    font-size: 18px;
+    padding: 5px 8px;
+}
+
+.edit_textarea {
+    height: 150px;
+}
+
+.submit_button {
+    padding: 9px 18px;
+    border: none;
+    border-radius: 3px;
+    font-size: 18px;
+    background-color: #f4f4f4;
+    border: 3px solid #40ff00;
+    transition: 0.3s;
+    cursor: pointer;
+}
+
+.submit_button:hover {
+    background-color: #40ff00;
+    color: white;
 }
 
 footer {

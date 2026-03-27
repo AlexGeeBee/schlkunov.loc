@@ -1,12 +1,11 @@
 <h1>Редактирование статьи: <?= $article->getName() ?></h1>
 
 
-<p><?= $article->getText() ?></p>
 <p>Автор: <?= $article->getAuthor()->getNickname() ?></p>
 
 
 <form action="" method="POST">
-    <label>Название статьи: <input type="text" name="name" value="<?= $article->getName() ?>"></label><br>
-    <label>Текст статьи: <input type="text" name="text" value="<?= $article->getText() ?>"></label><br>
-    <input type="submit" value="Обновить">
+    <label>Название статьи: <br> <input class="edit_input" type="text" name="name" value="<?= $article->getName() ?>"></label><br>
+    <label>Текст статьи: <br> <textarea class="edit_input edit_textarea" name="text" rows="10" cols="8"><?= $article->getText() ?></textarea></label><br>
+    <input class="submit_button" type="submit" value="Обновить">
 </form>

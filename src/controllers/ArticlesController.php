@@ -2,33 +2,58 @@
 
 namespace src\controllers;
 
-use src\models\Articles;
-use src\models\Users;
+use src\models\Article;
+use src\models\User;
 
 class ArticlesController extends Controller {
     public function index() {
-        $articles = Articles::findAll();
+        $articles = Article::findAll();
 
         $this->view->renderHTML('articles/index.php', ['articles' => $articles]);
     }
 
     public function view($id) {
-        $article = Articles::getById($id);
+        $article = Article::getById($id);
 
         if ($article !== null) {
             $this->view->renderHTML('articles/view.php', ['article' => $article]);
         }
         else {
             $this->view->renderHTML('errors/404.php', [], 404);
+            return;
         }
         
     }
 
     public function edit($id) {
-        $article = Articles::getById($id);
+        $article = Article::getById($id);
         if ($article === null) {
             $this->view->renderHTML('errors/404.php', [], 404);
+            return;
         }
+
+        if (!empty($_POST)) {
+            $article->updateFromArray($_POST);
+        }
+
         $this->view->renderHTML('articles/edit.php', ['article' => $article]);
+    }
+
+    public function add() {
+        $article = new Article();
+        $article->setName('Новая статья');
+        $article->setText('Текст новой статьи');
+        $article->setAuthorId(2);
+        $article->save();
+    }
+
+    public function delete($id) {
+        $article = Article::getById($id);
+
+        if ($article === null) {
+            $this->view->renderHTML('errors/404.php', [], 404);
+            return;
+        }
+        $article->delete();
     }
 }
