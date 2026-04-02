@@ -6,6 +6,7 @@ use src\exceptions\InvalidArgumentException;
 
 class User extends ActiveRecordEntity {
 
+    protected $id;
     protected $nickname;
     protected $email;
     protected $is_confirmed;
@@ -16,6 +17,10 @@ class User extends ActiveRecordEntity {
 
     protected static function getTableName(): string {
         return 'users';
+    }
+
+    public function getId(): int {
+        return $this->id;
     }
 
     public function getNickname():string {
@@ -81,12 +86,38 @@ class User extends ActiveRecordEntity {
         $user->is_confirmed = true;
         $user->role = 'user';
         $user->auth_token = sha1(random_bytes(100)) . sha1(random_bytes(100));
+        $user->refreshAuthToken();
 
         $user->save();
 
         return $user;
     }
 
+    public static function logIn(array $logInData) :User {
+
+        if (empty($logInData['login'])) {
+            throw new InvalidArgumentException('Не передан логин');
+        }
+        if (empty($logInData['password'])) {
+            throw new InvalidArgumentException('Не передан пароль');
+        }
+        $user = static::findOneByColumn('nickname', $logInData['login']);
+        
+        if($user === null){
+            throw new InvalidArgumentException('Неправильный логин');
+        }
+        if(!password_verify($logInData['password'], $user->getPasswordHash())){
+            throw new InvalidArgumentException('Неправильный пароль');
+        }
+        $user->refreshAuthToken();
+        $user->save();
+        return $user;
+    }
+
+    public function refreshAuthToken()
+    {    
+        $this->auth_token = sha1(random_bytes(100)) . sha1(random_bytes(100)) . sha1(random_bytes(100));   
+    }
 }
 
 ?>

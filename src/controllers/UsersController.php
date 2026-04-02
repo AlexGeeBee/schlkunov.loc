@@ -3,6 +3,7 @@
 namespace src\controllers;
 
 use src\models\User;
+use src\models\UsersAuthService;
 use src\exceptions\InvalidArgumentException;
 
 class UsersController extends Controller {
@@ -25,5 +26,24 @@ class UsersController extends Controller {
         }
 
         $this->view->renderHtml('user/signUp.php');
+    }
+
+    public function logIn() {
+        if (!empty($_POST)) {
+            try {
+                $user = User::logIn($_POST);
+                UsersAuthService::createToken($user);
+                header('Location: /schelkunov.loc');
+                return;
+            } 
+            
+            catch (invalidArgumentException $e) {
+                $this->view->renderHtml('user/logIn.php', ['error' => $e->getMessage()]);
+                return;
+            }
+        }
+
+        $this->view->renderHtml('user/logIn.php');
+        return;
     }
 }

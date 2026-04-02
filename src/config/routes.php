@@ -8,5 +8,6 @@ return [
     '~^article/(\d+)/delete$~' => [src\controllers\ArticlesController::class, 'delete'],
     '~^hello/(.*)$~' => [src\controllers\MainController::class, 'sayHello'],
     '~^user/signUp$~' => [src\controllers\UsersController::class, 'signUp'],
+    '~^user/logIn$~' => [src\controllers\UsersController::class, 'logIn'],
     '~^$~' => [src\controllers\MainController::class, 'main'],
 ];
