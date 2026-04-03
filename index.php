@@ -43,5 +43,8 @@ catch (\src\exceptions\DbException $e) {
 catch (\src\exceptions\NotFoundException $e) {
     $controller->view->renderHtml('errors/404.php', ['error' => $e->getMessage()], 404);
 }
+catch (\src\exceptions\UnauthorizedException $e) {
+    $controller->view->renderHtml('errors/401.php', ['error' => $e->getMessage()], 401);
+}
 
 ?>

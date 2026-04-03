@@ -6,15 +6,17 @@ class View
 {
     private $layout;
 
-    public function __construct(string $layout)
-    {
+    private $extraVars = [];
+
+    public function __construct(string $layout) {
         $this->layout = $layout;
     }
-    public function renderHTML(
-        string $viewName,
-        array $vars = [],
-        int $code = 200
-    ): void {
+
+    public function setVar(string $name, $value) {
+    $this->extraVars[$name] = $value;
+    }
+
+    public function renderHTML(string $viewName, array $vars = [], int $code = 200): void {
         http_response_code($code);
         $layoutFile =
             "layouts/{$this->layout}.php";
@@ -26,11 +28,10 @@ class View
         echo $this->renderFile($layoutFile, $fileVars);
     }
 
-    public  function renderFile(
-        string $fileName,
-        array $vars
-    ) {
+    public function renderFile(string $fileName, array $vars) {
+
         extract($vars);
+        extract($this->extraVars);
         $fileName = __DIR__ . '/' . $fileName;
         if (file_exists($fileName)) {
             ob_start();
@@ -38,7 +39,9 @@ class View
             $buffer = ob_get_contents();
             ob_get_clean();
             return $buffer;
-        } else {
+        } 
+        
+        else {
             echo "не найден  $fileName";
         }
     }

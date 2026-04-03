@@ -7,9 +7,9 @@ use src\models\User;
 use src\exceptions\NotFoundException;
 
 class ArticlesController extends Controller {
+
     public function index() {
         $articles = Article::findAll();
-
         $this->view->renderHTML('articles/index.php', ['articles' => $articles]);
     }
 
@@ -39,6 +39,10 @@ class ArticlesController extends Controller {
     }
 
     public function add() {
+
+        if ($this->user === null) {
+            throw UnauthorizedException();
+        }
         $article = new Article();
         $article->setName('Новая статья');
         $article->setText('Текст новой статьи');

@@ -34,7 +34,7 @@ class UsersController extends Controller {
                 $user = User::logIn($_POST);
                 UsersAuthService::createToken($user);
                 header('Location: /schelkunov.loc');
-                return;
+                exit();
             } 
             
             catch (invalidArgumentException $e) {
@@ -45,5 +45,11 @@ class UsersController extends Controller {
 
         $this->view->renderHtml('user/logIn.php');
         return;
+    }
+
+    public function logOut() {
+        setcookie('token', '', -1, '/', '', false, true);
+        header("Location: {$_SERVER['HTTP_REFERER']}");
+        exit();
     }
 }

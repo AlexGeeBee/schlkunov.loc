@@ -4,23 +4,17 @@
     <p style="background-color: red;"><?= $error ?></p>
 <?php endif ?>
 
-<form action="" method="POST">
+<form class="auth" action="" method="POST">
     <label for="login" class="form-label">Логин</label>
     <input type="text" class="form-control" id="login" name="login" value="<?= $_POST['login'] ?? '' ?>">
-
-    <br>
 
     <label for="password" class="form-label">Пароль</label>
     <input type="password" class="form-control" id="password" name="password">
 
-    <br>
+    <input type="submit" class="button" value="Войти">
 
-    <button type="submit" class="btn btn-dark card-button w-100 py-2">Войти</button>
-</form>
-
-<div id="bb" class="text-center mt-3 pt-2 border-top">
     <p>Нет аккаунта? <a href="user/signUp">Зарегистрироваться</a></p>
-</div>
+</form>
 
 
 <!-- <div class="container mt-5">

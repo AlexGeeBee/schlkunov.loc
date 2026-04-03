@@ -11,12 +11,22 @@
 <body>
 
 <header>
-    <h1>Мой Блог</h1>
+    <div class="header_left">
+        <h1><a href="">Мой Блог</a></h1>
+        <p><?= $user ? 'Пользователь: ' . $user->getNickname() : '' ?></p>
+    </div>
     <nav>
-        <a href="#home">Главная</a>
-        <a href="#about">О нас</a>
-        <a href="#blog">Блог</a>
-        <a href="#contact">Контакты</a>
+        <a href="">Главная</a>
+        <a href="articles">Статьи</a>
+
+        <?php if (!$user): ?>
+            <a href="user/logIn">Вход</a>
+            <a href="user/signUp">Регистрация</a>
+        <?php endif ?>
+
+        <?php if ($user): ?>
+            <a href="user/logOut">Выход</a>
+        <?php endif ?>
     </nav>
 </header>
 
@@ -25,7 +35,7 @@
 </main>
 
 <footer>
-    <p>© 2024 Мой Блог | Связаться: info@myblog.ru</p>
+    <p>© 2026 Мой Блог | Связаться: info@myblog.ru</p>
 </footer>
 
 </body>
