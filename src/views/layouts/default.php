@@ -18,6 +18,7 @@
     <nav>
         <a href="">Главная</a>
         <a href="articles">Статьи</a>
+        <a href="articles/search">Поиск</a>
 
         <?php if (!$user): ?>
             <a href="user/logIn">Вход</a>

@@ -95,12 +95,12 @@ class ArticlesController extends Controller {
 
     public function search() {
         if (empty($_GET['q'])) {
-            $this->view->renderHtml('articles/search');
+            $this->view->renderHtml('articles/search.php');
             return;
         }
         else {
-            $articles = Article::search($_GET['q']);
-            $this->view->renderHtml('articles/search', ['articles' => $articles]);
+            $articles = Article::searchByName($_GET['q']);
+            $this->view->renderHtml('articles/search.php', ['articles' => $articles]);
         }
     }
 }

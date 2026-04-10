@@ -114,6 +114,10 @@ class Article extends ActiveRecordEntity {
         return $article;
     }
 
+    public static function searchByName(string $searchString): ?array {
+        return parent::search('name', $searchString);
+    }
+
     // public static function findAll():array {
     //     $db = new Db();
     //     return $db->query('SELECT * FROM `articles`;', [], static::class);

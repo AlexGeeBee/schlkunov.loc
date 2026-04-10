@@ -1,9 +1,5 @@
 <h1>Статьи</h1>
 
-<?php if ($user): ?>
-    <p><a href="/schelkunov.loc/articles/add">Добавить статью</a></p>
-<?php endif ?>
-
 <div class="all_posts">
 
     <?php foreach($articles as $article): ?>
