@@ -43,7 +43,7 @@ class ArticlesController extends Controller {
             try {
                 $article->updateFromArray($_POST, $_FILES['img'], $this->user);
 
-                header("Location: /schelkunov.loc/article/{$article->getId()}");
+                header("Location: /article/{$article->getId()}");
                 exit;
             }
             catch (InvalidArgumentException $e) {
@@ -66,7 +66,7 @@ class ArticlesController extends Controller {
             try {
                 $article = Article::create($_POST, $_FILES['img'], $this->user);
 
-                header("Location: /schelkunov.loc/article/{$article->getId()}");
+                header("Location: /article/{$article->getId()}");
                 exit;
             }
             catch (InvalidArgumentException $e) {
@@ -89,7 +89,7 @@ class ArticlesController extends Controller {
         }
         $article->delete();
 
-        header("Location: /schelkunov.loc/articles");
+        header("Location: /articles");
         exit;
     }
 

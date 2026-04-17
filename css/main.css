@@ -135,7 +135,7 @@ main {
 /* EDIT */
 
 .edit_input {
-    margin: 15px 0 30px;
+    margin: 15px 0 20px;
     width: 100%;
     font-size: 18px;
     padding: 5px 8px;
@@ -143,6 +143,16 @@ main {
 
 .edit_textarea {
     height: 150px;
+    width: 100%;
+    padding: 5px 8px;
+    font-size: 18px;
+    margin: 15px 0 30px;
+}
+.form-label {
+    
+}
+.author_label {
+    margin-bottom: 15px;
 }
 
 .button {

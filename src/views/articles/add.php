@@ -10,12 +10,12 @@
     <form class="auth" action="" method="POST" enctype="multipart/form-data">
         <div class="mb-3">
             <label for="inputName" class="form-label">Название</label>
-            <input class="form-control" type="text" id="inputName" name="name" value="<?= $_POST['name'] ?? '' ?>">
+            <input class="edit_input form-control" type="text" id="inputName" name="name" value="<?= $_POST['name'] ?? '' ?>">
         </div> 
 
         <div class="mb-3">
             <label for="inputText" class="form-label">Текст</label>
-            <textarea class="form-control" id="inputText" name="text"><?= $_POST['text'] ?? '' ?></textarea>
+            <textarea class="edit_textarea form-control" id="inputText" name="text"><?= $_POST['text'] ?? '' ?></textarea>
         </div> 
 
         <div class="mb-3">

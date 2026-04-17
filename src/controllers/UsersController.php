@@ -33,7 +33,7 @@ class UsersController extends Controller {
             try {
                 $user = User::logIn($_POST);
                 UsersAuthService::createToken($user);
-                header('Location: /schelkunov.loc');
+                header('Location: /');
                 exit();
             } 
             

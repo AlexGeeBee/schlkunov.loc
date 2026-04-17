@@ -1,6 +1,6 @@
 <h1>Редактирование статьи: <?= $article->getName() ?></h1>
 
-<p>Автор: <?= $article->getAuthor()->getNickname() ?></p>
+<p class="author_label">Автор: <?= $article->getAuthor()->getNickname() ?></p>
 
 
 <?php if (!empty($error)) : ?>
@@ -13,12 +13,12 @@
     <form class="auth" action="" method="POST" enctype="multipart/form-data">
         <div class="mb-3">
             <label for="inputName" class="form-label">Название</label>
-            <input class="form-control" type="text" id="inputName" name="name" value="<?= $_POST['name'] ?? $article->getName() ?>">
+            <input class="edit_input form-control" type="text" id="inputName" name="name" value="<?= $_POST['name'] ?? $article->getName() ?>">
         </div> 
 
         <div class="mb-3">
             <label for="inputText" class="form-label">Текст</label>
-            <textarea class="form-control" id="inputText" name="text"><?= $_POST['text'] ?? $article->getText() ?></textarea>
+            <textarea class="edit_textarea form-control" id="inputText" name="text"><?= $_POST['text'] ?? $article->getText() ?></textarea>
         </div> 
 
         <div class="mb-3">
@@ -27,7 +27,7 @@
         </div> 
 
         <input type="submit" class="button btn btn-primary" value="Отправить">
-        <a href="article/<?= $article->getId() ?>" class="button btn btn-primary"><= Отменить</a>
+        <a href="/article/<?= $article->getId() ?>" class="button btn btn-primary"><= Отменить</a>
 
     </form>
 

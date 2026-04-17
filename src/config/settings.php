@@ -2,8 +2,8 @@
 
 return [
     'db' => [
-        'host' => 'localhost', // дома: MySQL-8.2
-        'dbname' => 'ylarodb', // дома: ylaro_db
+        'host' => 'MySQL-8.2',
+        'dbname' => 'ylaro_db',
         'user' => 'root',
         'password' => '',
     ]

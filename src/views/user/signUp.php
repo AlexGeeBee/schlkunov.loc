@@ -16,5 +16,5 @@
 
     <input type="submit" class="button" value="Зарегистрироваться">
 
-    <p>Уже есть аккаунт? <a href="user/logIn">Войти</a></p>
+    <p>Уже есть аккаунт? <a href="/user/logIn">Войти</a></p>
 </form>

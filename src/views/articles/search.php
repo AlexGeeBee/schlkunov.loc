@@ -33,11 +33,11 @@
                         <p class="post_author">Автор: <?= $article->getAuthor()->getNickname() ?></p>
                         
                         <div class="post_actions">
-                            <a class="post_link" href="article/<?= $article->getId() ?>">Подробнее</a>
+                            <a class="post_link" href="/article/<?= $article->getId() ?>">Подробнее</a>
 
                             <?php if ($user): ?>
-                                <a class="post_link edit" href="article/<?= $article->getId() ?>/edit">Редактировать</a>
-                                <a class="post_link delete" href="article/<?= $article->getId() ?>/delete">Удалить</a>
+                                <a class="post_link edit" href="/article/<?= $article->getId() ?>/edit">Редактировать</a>
+                                <a class="post_link delete" href="/article/<?= $article->getId() ?>/delete">Удалить</a>
                             <?php endif ?>
                         </div>
                     </div>
